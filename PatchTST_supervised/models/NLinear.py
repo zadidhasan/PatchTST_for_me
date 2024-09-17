@@ -17,6 +17,7 @@ class Model(nn.Module):
 
     def forward(self, x):
         # x: [Batch, Input length, Channel]
+        print('the shape of x:', x.shape)
         seq_last = x[:,-1:,:].detach()
         x = x - seq_last
         x = self.Linear(x.permute(0,2,1)).permute(0,2,1)
